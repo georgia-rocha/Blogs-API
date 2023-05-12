@@ -1,15 +1,12 @@
-const jwt = require('jsonwebtoken');
 const { User } = require('../models');
-
-const { JWT_SECRET } = process.env;
+const { generateToken } = require('../auth/authToken');
 
 const LoginService = async ({ email, password }) => {
-    const user = await User.findOne({ where: { email, password } });
-    console.log(user);
+  const user = await User.findOne({ where: { email } });
   if (!user) {
     throw new Error('Invalid fields');
   }
-  const token = jwt.sign({ email, password }, JWT_SECRET);
+  const token = generateToken({ email, password });
   return token;
 };
 
