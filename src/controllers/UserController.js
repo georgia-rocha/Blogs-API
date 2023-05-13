@@ -13,6 +13,18 @@ const createUser = async (req, res) => {
   }
 };
 
+const getUserAll = async (req, res) => {
+  try {
+    const users = await userService.getUserAll();
+
+    if (users.message) return res.status(404).json(users);
+    return res.status(200).json(users);
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({ message: 'Algo deu errado' });
+  }
+};
 module.exports = {
   createUser,
+  getUserAll,
 };
