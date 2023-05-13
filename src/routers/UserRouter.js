@@ -17,4 +17,10 @@ router.get(
   user.getUserAll,
 );
 
+router.get(
+  '/:id',
+  validateToken,
+  user.getUserById,
+);
+
 module.exports = router;
