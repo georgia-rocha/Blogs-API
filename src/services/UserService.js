@@ -30,7 +30,7 @@ const getUserById = async (id) => {
   const user = await User.findOne({ where: { id }, attributes: { exclude: 'password' } });
   console.log(user, 'user');
 
-  if (!user || !user.length) {
+  if (!user) {
     return ({ message: 'User does not exist' });
   }
   return user;
