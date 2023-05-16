@@ -1,6 +1,6 @@
 const express = require('express');
 const { post } = require('../controllers/index');
-const { validatenewPost } = require('../middlewares/validationsPost');
+const { validatenewPost, validateUpdatePost } = require('../middlewares/validationsPost');
 const { validateToken } = require('../middlewares/validateToken');
 
 const router = express.Router();
@@ -22,6 +22,13 @@ router.get(
   '/:id',
   validateToken,
   post.getPostById,
+);
+
+router.put(
+  '/:id',
+  validateToken,
+  validateUpdatePost,
+  post.updatePostById,
 );
 
 module.exports = router;

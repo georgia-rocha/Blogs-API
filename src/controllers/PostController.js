@@ -43,8 +43,30 @@ const getPostById = async (req, res) => {
   }
 };
 
+const updatePostById = async (req, res) => {
+  const { id } = req.params;
+  const { title, content } = req.body;
+  try {
+    const token = req.headers.authorization;
+    const user = jwt.verify(token, JWT_SECRET);
+    
+    if (Number(id) !== Number(user.id)) {
+      return res.status(401).json({ message: 'Unauthorized user' });
+    }
+
+    const updated = await postService.updatePostById(id, title, content);
+    if (updated.message) return res.status(404).json(updated.message);
+
+    return res.status(200).json(updated);
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({ message: 'Algo deu errado' });
+  }
+};
+
 module.exports = {
   createPost,
   getPostsAll,
   getPostById,
+  updatePostById,
 };  
