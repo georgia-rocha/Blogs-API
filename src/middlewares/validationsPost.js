@@ -1,7 +1,7 @@
 const Joi = require('joi');
 
 const Schema = Joi.object({
-  tittle: Joi.string().required(),
+  title: Joi.string().required(),
   content: Joi.string().required(),
   categoryIds: Joi.array().required().messages({
     categoryIds: 'one or more "categoryIds" not found' }),

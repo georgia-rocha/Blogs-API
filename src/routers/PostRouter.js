@@ -7,6 +7,8 @@ const router = express.Router();
 
 router.post(
   '/',
+  validateToken,
+  validatenewPost,
   post.createPost,
 );
 

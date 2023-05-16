@@ -8,13 +8,10 @@ const createPost = async (req, res) => {
     const { title, content, categoryIds } = req.body;
     const token = req.headers.authorization;
     const user = jwt.verify(token, JWT_SECRET);
-    console.log(req.body);
 
-    if (!title || !content || !categoryIds) {
-      return res.status(400).json({ message: 'Some required fields are missing' });
-    }
     const newPost = await postService.createPost(title, content, categoryIds, user.id);
-
+    if (newPost.message) return res.status(400).json({ message: newPost.message });
+    console.log(newPost);
     return res.status(201).json(newPost);
   } catch (error) {
     console.log(error);

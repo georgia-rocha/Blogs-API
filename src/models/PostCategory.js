@@ -4,15 +4,10 @@ module.exports = (sequelize, DataTypes) => {
     const PostCategory = sequelize.define(
       'PostCategory',
       {
-        id: {
-        allowNull: false,
-        type: DataTypes.INTEGER,
-        primaryKey: true,
-        autoIncrement: true,
-      },
       postId: {
         allowNull: false,
         type: DataTypes.INTEGER,
+        primaryKey: true,
         onUpdate: 'CASCADE',
         onDelete: 'CASCADE',
         field: 'post_id',

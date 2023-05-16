@@ -1,9 +1,10 @@
 const { BlogPost, PostCategory, Category } = require('../models');
 
 const createPost = async (title, content, categoryIds, userId) => {
-  const category = categoryIds.some(async (id) => Category.findOne({ where: { id } }));
+  const category = await Promise.all(categoryIds
+    .map(async (id) => Category.findOne({ where: { id } })));
 
-  if (!category) {
+  if (!category.every((categoryId) => categoryId)) {
     return ({ message: 'one or more "categoryIds" not found' });
   }
 
