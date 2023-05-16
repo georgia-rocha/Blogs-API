@@ -12,4 +12,10 @@ router.post(
   post.createPost,
 );
 
+router.get(
+  '/',
+  validateToken,
+  post.getPostsAll,
+);
+
 module.exports = router;

@@ -19,13 +19,6 @@ module.exports = (sequelize, DataTypes) => {
       userId: {
         allowNull: false,
         type: DataTypes.INTEGER,
-        onUpdate: 'CASCADE',
-        onDelete: 'CASCADE',
-        field: 'user_id',
-        references: {
-          model: 'users',
-          key: 'id',
-        },
       },
       published: {
         allowNull: false,
@@ -45,7 +38,7 @@ module.exports = (sequelize, DataTypes) => {
 
   BlogPosts.associate = (models) => {
     BlogPosts.belongsTo(models.User, {
-      foreignKey: 'user_id',
+      foreignKey: 'userId',
       as: 'user',
     });
   };

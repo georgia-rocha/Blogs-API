@@ -11,21 +11,14 @@ module.exports = (sequelize, DataTypes) => {
         onUpdate: 'CASCADE',
         onDelete: 'CASCADE',
         field: 'post_id',
-        references: {
-          model: 'blog_posts',
-          key: 'id',
-        }
       },
       categoryId: {
         allowNull: false,
         type: DataTypes.INTEGER,
+        primaryKey: true,
         onUpdate: 'CASCADE',
         onDelete: 'CASCADE',
         field: 'category_id',
-        references: {
-          model: 'categories',
-          key: 'id',
-        }
       },
       },
       {
@@ -36,16 +29,16 @@ module.exports = (sequelize, DataTypes) => {
     );
 
     PostCategory.associate = (models) => {
-      models.BlogPost.belongsToMany(models.Category, {
-        as: 'postId',
-        through: PostCategory,
-        foreignKey: 'post_id',
-      });
       models.Category.belongsToMany(models.BlogPost, {
-        as: 'categoryId',
+        as: 'posts',
         through: PostCategory,
         foreignKey: 'category_id',
       })
+      models.BlogPost.belongsToMany(models.Category, {
+        as: 'categories',
+        through: PostCategory,
+        foreignKey: 'post_id',
+      });
     };
   
     return PostCategory;
