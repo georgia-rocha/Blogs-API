@@ -2,8 +2,8 @@ const { User } = require('../models');
 const { generateToken } = require('../auth/authToken');
 
 const createUser = async (displayName, email, password, image) => {
-  const ifUser = await User.findOne({ where: { email } });
-  if (ifUser) {
+  const user = await User.findOne({ where: { email } });
+  if (user) {
     return ({ message: 'User already registered' }); 
   }
   
@@ -12,7 +12,7 @@ const createUser = async (displayName, email, password, image) => {
   if (!newUser) {
     return ({ message: 'Não é possível criar um novo usuário' });
   }
-  const token = generateToken({ email, password });
+  const token = generateToken({ email, password, id: newUser.id });
   return token;
 };
 

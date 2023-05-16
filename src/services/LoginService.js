@@ -6,7 +6,7 @@ const LoginService = async ({ email, password }) => {
   if (!user) {
     throw new Error('Invalid fields');
   }
-  const token = generateToken({ email, password });
+  const token = generateToken({ email, password, id: user.id });
   return token;
 };
 
