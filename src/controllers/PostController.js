@@ -31,7 +31,20 @@ const getPostsAll = async (req, res) => {
   }
 };
 
+const getPostById = async (req, res) => {
+  const { id } = req.params;
+  try {
+    const post = await postService.getPostById(id);
+    if (post.message) return res.status(404).json(post);
+      return res.status(200).json(post);
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({ message: 'Algo deu errado' });
+  }
+};
+
 module.exports = {
   createPost,
   getPostsAll,
+  getPostById,
 };  
