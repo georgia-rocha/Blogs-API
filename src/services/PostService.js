@@ -1,3 +1,4 @@
+const { Op } = require('sequelize');
 const { BlogPost, PostCategory, Category, User } = require('../models');
 
 const createPost = async (title, content, categoryIds, userId) => {
@@ -27,10 +28,11 @@ const getPostsAll = async () => {
   try {
     const blogPosts = await BlogPost.findAll({
       include: [
-      { model: User, as: 'user', attributes: { exclude: ['password'] } },
-      { model: Category, as: 'categories', through: { attributes: [] } },
-    ] });
-    
+        { model: User, as: 'user', attributes: { exclude: ['password'] } },
+        { model: Category, as: 'categories', through: { attributes: [] } },
+      ],
+    });
+
     return blogPosts;
   } catch (error) {
     console.log(error);
@@ -53,7 +55,7 @@ const getPostById = async (id) => {
 
 const updatePostById = async (id, title, content) => {
   console.log(id, title, content);
- await BlogPost.update(
+  await BlogPost.update(
     { title, content },
     { where: { id } },
   );
@@ -73,10 +75,32 @@ const deletePostById = async (id) => {
   }
 };
 
+const getPostByName = async (name) => {
+  try {
+    const posts = await BlogPost.findAll({
+      where: {
+        [Op.or]: [
+          { title: { [Op.like]: `%${name}` } },
+          { content: { [Op.like]: `%${name}` } },
+        ],
+      },
+      include: [
+        { model: User, as: 'user', attributes: { exclude: ['password'] } },
+        { model: Category, as: 'categories', through: { attributes: [] } },
+      ],
+    });
+    return posts;
+  } catch (error) {
+    console.log(error);
+    return ({ message: 'Nenhum Post encontrado' });
+  }
+};
+
 module.exports = {
   createPost,
   getPostsAll,
   getPostById,
   updatePostById,
   deletePostById,
+  getPostByName,
 };

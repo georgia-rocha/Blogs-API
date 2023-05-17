@@ -87,10 +87,24 @@ try {
 }
 };
 
+const getPostByName = async (req, res) => {
+  const { q } = req.query;
+  try {
+    const post = await postService.getPostByName(q);
+    console.log(post);
+    if (post.message) return res.status(404).json(post);
+      return res.status(200).json(post);
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({ message: ERROR_MESSAGE });
+  }
+};
+
 module.exports = {
   createPost,
   getPostsAll,
   getPostById,
   updatePostById,
   deletePostById,
+  getPostByName,
 };  

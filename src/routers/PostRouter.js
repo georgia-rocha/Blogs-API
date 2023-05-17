@@ -19,6 +19,12 @@ router.get(
 );
 
 router.get(
+  '/search',
+  validateToken,
+  post.getPostByName,
+);
+
+router.get(
   '/:id',
   validateToken,
   post.getPostById,
