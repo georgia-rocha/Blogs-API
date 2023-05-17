@@ -93,7 +93,7 @@ npm test **01**
     <strong>1 - Cria migrations para as tabelas users, categories, blog_posts, posts_categories</strong>
   </summary>
   <ul>
-    <li> Foi criado as migrations para as tabelas respeitando a nomeclatura pedida no requisito e o diagrama de Entidade-Relacionamento e o formato das entidades;
+    <li> Foram criadas as migrations para as tabelas respeitando a nomenclatura pedida no requisito e o diagrama de Entidade-Relacionamento e o formato das entidades;
     </li>
     <li>O teste fez uma conexão no banco de dados usando a configuração de teste do arquivo src/config/config.js, e foi posível validar que:
     </li>
@@ -124,21 +124,24 @@ npm test **01**
   
   <details>
     <summary><strong>3 - POST /login</strong></summary>
-    <li> O endpoint é acessível pela URL `/login`;</li>
-    <li>A requisição é feita no formato a seguir:
-
-    ```json
+    <ul>
+      <li> O endpoint é acessível pela URL `/login`;</li>
+      <li>A requisição é feita no formato a seguir:
+    </ul>
+    
+  ```json
+  [
     {
       "email": "lewishamilton@gmail.com",
       "password": "123456"
     }
-     ```
- 
+  ]
+  ```
 
   <h2>Os seguintes pontos foram avaliados:</h2>
     
   - Foi validado que não é possível fazer login sem todos os campos preenchidos:
-    - Se a requisição não tiver todos os campos devidamente preenchidos(não pode haver campos em branco), o resultado retornado deverá ser conforme exibido abaixo, com um status http `400`:
+    - Se a requisição não tiver todos os campos devidamente preenchidos(não pode haver campos em branco), o resultado retornado deverá ser conforme exibido abaixo, com um status HTTP `400`:
 
     ```json
     {
@@ -147,7 +150,7 @@ npm test **01**
     ```
 
   - Foi validado que não é possível fazer login com um usuário que não existe:
-    - Se a requisição receber um par de `email` e `password` errados/inexistentes, o resultado retornado deverá ser conforme exibido abaixo, com um status http `400`:
+    - Se a requisição receber um par de `email` e `password` errados/inexistentes, o resultado retornado deverá ser conforme exibido abaixo, com um status HTTP `400`:
     ```json
     {
       "message": "Invalid fields"
@@ -155,13 +158,12 @@ npm test **01**
     ```
   
   - É validado que é possível fazer login com sucesso:
-    - Se o login foi feito com sucesso o resultado retornado é conforme exibido abaixo, com um status http `200`:
+    - Se o login foi feito com sucesso o resultado retornado é conforme exibido abaixo, com um status HTTP `200`:
     ```json
     {
       "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjp7ImlkIjo1LCJkaXNwbGF5TmFtZSI6InVzdWFyaW8gZGUgdGVzdGUiLCJlbWFpbCI6InRlc3RlQGVtYWlsLmNvbSIsImltYWdlIjoibnVsbCJ9LCJpYXQiOjE2MjAyNDQxODcsImV4cCI6MTYyMDY3NjE4N30.Roc4byj6mYakYqd9LTCozU1hd9k_Vw5IWKGL4hcCVG8"
     }
     ```
-    > :warning: O token anterior é fictício, seu token deve ser gerado a partir da variável de ambiente `JWT_SECRET`, do `payload` da requisição e não deve conter o atributo `password` em sua construção.
 </details>
     
 <details>
@@ -185,7 +187,7 @@ npm test **01**
   <h2>Pontos avaliados</h2>
 
   * É validado que não é possível cadastrar com o campo `displayName` menor que 8 caracteres;
-    - Se a requisição não tiver o campo `displayName` devidamente preenchido com 8 caracteres ou mais, o resultado retornado é conforme exibido abaixo, com um status http `400`:
+    - Se a requisição não tiver o campo `displayName` devidamente preenchido com 8 caracteres ou mais, o resultado retornado é conforme exibido abaixo, com um status HTTP `400`:
     ```json
     {
       "message": "\"displayName\" length must be at least 8 characters long"
@@ -193,7 +195,7 @@ npm test **01**
     ```
   
   * É validado que não é possível cadastrar com o campo `email` com formato inválido;
-    - Se a requisição não tiver o campo `email` devidamente preenchido com o formato `<prefixo@dominio>`, o resultado retornado é conforme exibido abaixo, com um status http `400`:
+    - Se a requisição não tiver o campo `email` devidamente preenchido com o formato `<prefixo@dominio>`, o resultado retornado é conforme exibido abaixo, com um status HTTP `400`:
     ```json
     {
       "message": "\"email\" must be a valid email"
@@ -201,7 +203,7 @@ npm test **01**
     ```
 
   * É validado que não é possível cadastrar com o campo `password` menor que 6 caracteres;
-    - Se a requisição não tiver o campo `password` devidamente preenchido com 6 caracteres ou mais, o resultado retornado é conforme exibido abaixo, com um status http `400`:
+    - Se a requisição não tiver o campo `password` devidamente preenchido com 6 caracteres ou mais, o resultado retornado é conforme exibido abaixo, com um status HTTP `400`:
     ```json
     {
       "message": "\"password\" length must be at least 6 characters long"
@@ -209,7 +211,7 @@ npm test **01**
     ```
 
   * É validado que não é possível cadastrar com um email já existente;
-    - Se a requisição enviar o campo `email` com um email que já existe, o resultado retornado é conforme exibido abaixo, com um status http `409`:
+    - Se a requisição enviar o campo `email` com um email que já existe, o resultado retornado é conforme exibido abaixo, com um status HTTP `409`:
     ```json
     {
       "message": "User already registered"
@@ -217,7 +219,7 @@ npm test **01**
     ```
   
   * É validado que é possível cadastrar um pessoa usuária com sucesso;
-    - Se o user for criado com sucesso o resultado retornado é conforme exibido abaixo, com um status http `201`:
+    - Se o user for criado com sucesso o resultado retornado é conforme exibido abaixo, com um status HTTP `201`:
     ```json
       {
         "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjp7ImlkIjo1LCJkaXNwbGF5TmFtZSI6InVzdWFyaW8gZGUgdGVzdGUiLCJlbWFpbCI6InRlc3RlQGVtYWlsLmNvbSIsImltYWdlIjoibnVsbCJ9LCJpYXQiOjE2MjAyNDQxODcsImV4cCI6MTYyMDY3NjE4N30.Roc4byj6mYakYqd9LTCozU1hd9k_Vw5IWKGL4hcCVG8"
@@ -231,21 +233,22 @@ npm test **01**
     <ul>
       <li>O endpoint é acessível pela URL /user, onde é possível buscar todos os usuários na tabela no banco de dados;</li>
      <li>É validado que é possível listar todos os usuários;</li>
-     <li>Ao listar usuários com sucesso o resultado retornado é conforme exibido abaixo, com um status http `200`:</li>
+     <li>Ao listar usuários com sucesso o resultado retornado é conforme exibido abaixo, com um status HTTP <strong>200</strong>:</li>
     </ul>
 
-      ```json
-      [
-        {
-            "id": 1,
-            "displayName": "Lewis Hamilton",
-            "email": "lewishamilton@gmail.com",
-            "image": "https://upload.wikimedia.org/wikipedia/commons/1/18/Lewis_Hamilton_2016_Malaysia_2.jpg"
-        },
+```json
+  [
+    {
+      "id": 1,
+      "displayName": "Lewis Hamilton",
+      "email": "lewishamilton@gmail.com",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/1/18/Lewis_Hamilton_2016_Malaysia_2.jpg"
+    },
 
-        /* ... */
-      ]
-      ```
+    /* ... */
+  ]
+```
+
 </details>
     
 <details>
@@ -253,24 +256,27 @@ npm test **01**
     <strong>6 - GET /user/:id</strong>
   </summary>
   <ul>
-    <li>O endpoint é acessível através do URL `/user/:id`;</li>
-    <li>O endpoint é capaz de trazer o `user` baseado no `id` do banco de dados se ele existir;</li>
+    <li>O endpoint é acessível através do URL <strong>/user/:id</strong>;</li>
+    <li>O endpoint é capaz de trazer o <strong>user</strong> baseado no <strong>id</strong> do banco de dados se ele existir;</li>
   </ul>
   <h2>Pontos avaliados</h2>
 
    * É validado que é possível listar um usuário específico com sucesso;
-    - Ao listar um usuário com sucesso o resultado retornado é conforme exibido abaixo, com um status http `200`:
-    ```json
-    {
-      "id": 1,
-      "displayName": "Lewis Hamilton",
-      "email": "lewishamilton@gmail.com",
-      "image": "https://upload.wikimedia.org/wikipedia/commons/1/18/Lewis_Hamilton_2016_Malaysia_2.jpg"
-    }
-    ```
+    - Ao listar um usuário com sucesso o resultado retornado é conforme exibido abaixo, com um status HTTP <strong>200</strong>:
+  
+  ```json
+    [
+      {
+        "id": 1,
+        "displayName": "Lewis Hamilton",
+        "email": "lewishamilton@gmail.com",
+        "image": "https://upload.wikimedia.org/wikipedia/commons/1/18/Lewis_Hamilton_2016_Malaysia_2.jpg"
+      }
+    ]
+  ```
 
   * É validado que não é possível listar um usuário inexistente;
-    - Se o usuário for inexistente o resultado retornado é conforme exibido abaixo, com um status http `404`:
+    - Se o usuário for inexistente o resultado retornado é conforme exibido abaixo, com um status HTTP 404`:
     ```json
     {
       "message": "User does not exist"
@@ -285,10 +291,10 @@ npm test **01**
        
   <h2>Pontos avaliados</h2>
 
-  * É validado que existe o arquivo 'Category.js';
-  * É validado que o modelo possui o nome 'Category';
-  * É validado que o modelo possui a propriedade 'id';
-  * É validado que o modelo possui a propriedade 'name';
+  * É validado que existe o arquivo <strong>Category.js</strong>;
+  * É validado que o modelo possui o nome <strong>Category</strong>;
+  * É validado que o modelo possui a propriedade <strong>id</strong>;
+  * É validado que o modelo possui a propriedade <strong>name</strong>;
 </details>
   
 <details>
@@ -296,7 +302,7 @@ npm test **01**
     <strong>8 - POST /categories</strong>
   </summary>
   <ul>    
-    <li>O endpoint é acessível através do URL `/categories`;</li>
+    <li>O endpoint é acessível através do URL <strong>/categories</strong>;</li>
     <li>O endpoint é capaz de adicionar uma nova categoria na tabela no banco de dados;</li>
     <li>O corpo da requisição deverá seguir o formato abaixo:</li>
   </ul>
@@ -312,7 +318,7 @@ npm test **01**
   <h2>Pontos avaliados</h2>
 
   * É validado que não é possível cadastrar uma categoria sem o campo `name`;
-    - Se a requisição não tiver o campo `name` devidamente preenchidos(não pode haver campo em branco), o resultado retornado é conforme exibido abaixo, com um status http `400`:
+    - Se a requisição não tiver o campo `name` devidamente preenchidos(não pode haver campo em branco), o resultado retornado é conforme exibido abaixo, com um status HTTP `400`:
     ```json
     {
       "message": "\"name\" is required"
@@ -320,7 +326,7 @@ npm test **01**
     ```
 
   * É validado que é possível cadastrar uma categoria com sucesso;
-    - Se a categoria for criada com sucesso o resultado retornado é conforme exibido abaixo, com um status http `201`:
+    - Se a categoria for criada com sucesso o resultado retornado é conforme exibido abaixo, com um status HTTP `201`:
     ```json
     [
       {
@@ -336,13 +342,13 @@ npm test **01**
     <strong>9 - GET /categories</strong>
   </summary>
   <ul>  
-    <li>O endpoint é acessível através do URL `/categories`;</li>
+    <li>O endpoint é acessível através do URL <strong>/categories</strong>;</li>
     <li>O endpoint é capaz de trazer todas categorias do banco de dados;</li>
   </ul>
   <h2>Pontos avaliados</h2>
 
   * É validado que é possível listar todas as categoria com sucesso;
-    - Ao listar categorias com sucesso o resultado retornado é conforme exibido abaixo, com um status http `200`:
+    - Ao listar categorias com sucesso o resultado retornado é conforme exibido abaixo, com um status HTTP `200`:
     ```json
     [
       {
@@ -370,9 +376,9 @@ npm test **01**
   * É validado que o modelo possui a propriedade 'id';
   * É validado que o modelo possui a propriedade 'title';
   * É validado que o modelo possui a propriedade 'content';
-  * É validado que o modelo possui a propriedade 'user_id'];
+  * É validado que o modelo possui a propriedade 'user_id';
   * É validado que o modelo possui a propriedade 'published';
-  * É validado que o modelo possui a propriedade 'updated'];
+  * É validado que o modelo possui a propriedade 'updated';
   * É validado que o modelo em 'BlogPost.js', define a associação 'belongsTo', com a entidade de nome 'User';
 
   * É validado que o modelo em 'User.js', define a associação 'hasMany', com a entidade de nome 'BlogPost';
@@ -398,7 +404,7 @@ npm test **01**
 <details>
   <summary><strong>12 - POST /post</strong></summary>
   <ul>
-    <li>O endpoint é acessível através do URL `/post`;</li>
+    <li>O endpoint é acessível através do URL <strong>/post</strong>;</li>
     <li>O endpoint é capaz de adicionar um novo blog post e vinculá-lo às categorias em suas tabelas no banco de dados;
     </li>
     <li>O corpo da requisição segue o formato abaixo:</li>
@@ -414,7 +420,7 @@ npm test **01**
   <h2>Pontos avaliados</h2>
        
   * É validado que não é possível cadastrar sem todos os campos preenchidos;
-    - Se a requisição não tiver todos os campos devidamente preenchidos(não pode haver campos em branco), o resultado retornado é conforme exibido abaixo, com um status http `400`:
+    - Se a requisição não tiver todos os campos devidamente preenchidos(não pode haver campos em branco), o resultado retornado é conforme exibido abaixo, com um status HTTP `400`:
     ```json
     {
       "message": "Some required fields are missing"
@@ -422,7 +428,7 @@ npm test **01**
     ```
 
   * É validado que não é possível cadastrar um blog_post com uma `categoryIds` inexistente;
-    - Se a requisição **não** tiver o campo `categoryIds` devidamente preenchido com um array com **todas** as categorias existentes, o resultado retornado é conforme exibido abaixo, com um status http `400``:
+    - Se a requisição **não** tiver o campo `categoryIds` devidamente preenchido com um array com **todas** as categorias existentes, o resultado retornado é conforme exibido abaixo, com um status HTTP `400`:
     ```json
     {
       "message": "one or more \"categoryIds\" not found"
@@ -430,7 +436,7 @@ npm test **01**
     ```
 
   * É validado que é possível cadastrar um blog_post com sucesso;
-  - Se o blog post for criado com sucesso o resultado retornado é conforme exibido abaixo, com um status http `201`:
+  - Se o blog post for criado com sucesso o resultado retornado é conforme exibido abaixo, com um status HTTP `201`:
   ```json
   {
     "id": 3,
@@ -446,13 +452,13 @@ npm test **01**
 <details>
   <summary><strong>13 - GET /post/</strong></summary>
     <ul>
-      <li>O endpoint é acessível através do URL `/post`;</li>
+      <li>O endpoint é acessível através do URL <strong>/post</strong>;</li>
       <li>O endpoint é capaz de trazer todos os blogs post, user dono dele e as categorias do banco de dados;</li>
     </ul>
     <h2>Pontos avaliados</h2>
 
   * É validado que é possível listar blogpost com sucesso;
-    - Ao listar posts com sucesso o resultado retornado é conforme exibido abaixo, com um status http `200`:
+    - Ao listar posts com sucesso o resultado retornado é conforme exibido abaixo, com um status HTTP `200`:
   
     ```json
     [
@@ -488,13 +494,13 @@ npm test **01**
     <strong>14 - GET /post/:id</strong>
   </summary>
     <ul>
-      <li>O endpoint é acessível através do URL `/post/:id`;</li>
-      <li>O endpoint é capaz de trazer o blog post baseado no `id` do banco de dados se ele existir;</li>
+      <li>O endpoint é acessível através do URL <strong>/post/:id</strong>;</li>
+      <li>O endpoint é capaz de trazer o blog post baseado no <strong>id</strong> do banco de dados se ele existir;</li>
     </ul>
   <h2>Pontos avaliados</h2>
 
   * É validado que é possível listar um blogpost com sucesso;
-    - Ao listar um post com sucesso o resultado retornado é conforme exibido abaixo, com um status http `200`:
+    - Ao listar um post com sucesso o resultado retornado é conforme exibido abaixo, com um status HTTP `200`:
   
     ```json
     {
@@ -520,7 +526,7 @@ npm test **01**
     ```
 
   * É validado que não é possível listar um blogpost inexistente;
-    - Se o post for inexistente o resultado retornado é conforme exibido abaixo, com um status http `404`:
+    - Se o post for inexistente o resultado retornado é conforme exibido abaixo, com um status HTTP `404`:
     ```json
     {
       "message": "Post does not exist"
@@ -533,10 +539,10 @@ npm test **01**
     <strong>15 - PUT /post/:id</strong>
   </summary>
   <ul>
-    <li>O endpoint é acessível através do URL `/post/:id`;</li>
+    <li>O endpoint é acessível através do URL <strong>/post/:id</strong>;</li>
     <li>O endpoint é capaz de alterar um post do banco de dados, se ele existir;</li>
     <li>A aplicação só permite a alteração de um blog post caso a pessoa seja dona dele;</li>
-    <li>A aplicação não permite a alteração das categorias do post, somente os atributos `title` e `content` podem ser alterados;</li>
+    <li>A aplicação não permite a alteração das categorias do post, somente os atributos <strong>title</strong> e <strong>content</strong> podem ser alterados;</li>
     <li>O corpo da requisição segue o formato abaixo:</li>
 
   ```json
@@ -549,7 +555,7 @@ npm test **01**
   <h2>Pontos avaliados</h2>
 
   * É validado que não é possível editar um blogpost com outro usuário;
-    - Somente o user que criou o blog post poderá editá-lo, o resultado retornado é conforme exibido abaixo, com um status http `401`
+    - Somente o user que criou o blog post poderá editá-lo, o resultado retornado é conforme exibido abaixo, com um status HTTP `401`
   
     ```json
       {
@@ -558,7 +564,7 @@ npm test **01**
     ```
 
   * É validado que não é possível editar sem todos os campos preenchidos;
-    - Se a requisição não tiver todos os campos devidamente preenchidos(não pode haver campos em branco), o resultado retornado é conforme exibido abaixo, com um status http `400`:
+    - Se a requisição não tiver todos os campos devidamente preenchidos(não pode haver campos em branco), o resultado retornado é conforme exibido abaixo, com um status HTTP `400`:
     ```json
     {
       "message": "Some required fields are missing"
@@ -566,7 +572,7 @@ npm test **01**
     ```
 
   * É validado que é possível editar um blogpost com sucesso;
-    - Se o blog post for alterado com sucesso o resultado retornado é conforme exibido abaixo, com um status http `200`:
+    - Se o blog post for alterado com sucesso o resultado retornado é conforme exibido abaixo, com um status HTTP `200`:
     ```json
     {
       "id": 3,
@@ -598,15 +604,15 @@ npm test **01**
 <details>
   <summary><strong>16 - DELETE /post/:id</strong></summary>
     <ul>
-      <li>O endpoint é acessível através do URL `/post/:id`;</li>
-      <li> O endpoint é capaz de deletar um blog post baseado no `id` do banco de dados se ele existir;</li>
+      <li>O endpoint é acessível através do URL <strong>/post/:id</strong>;</li>
+      <li> O endpoint é capaz de deletar um blog post baseado no <strong>id</strong> do banco de dados se ele existir;</li>
       <li> A aplicação só permite a deleção de um blog post caso a pessoa seja dona dele;</li>
     </ul>
 
 <h2>Os seguintes pontos serão avaliados</h2>
 
   * É validado que não é possível deletar um blogpost com outro usuário;
-    - Somente o user que criou o blog post poderá deletá-lo, o resultado retornado é conforme exibido abaixo, com um status http `401`
+    - Somente o user que criou o blog post poderá deletá-lo, o resultado retornado é conforme exibido abaixo, com um status HTTP `401`
     ```json
       {
         "message": "Unauthorized user"
@@ -614,10 +620,10 @@ npm test **01**
     ```
 
   * É validado que é possível deletar um blogpost com sucesso;
-    - Se o blog post for deletado com sucesso não deve ser retornada nenhuma resposta, apenas um status http `204`:
+    - Se o blog post for deletado com sucesso não deve ser retornada nenhuma resposta, apenas um status HTTP `204`:
 
   * É validado que não é possível deletar um blogpost inexistente;
-    - Se o post for inexistente o resultado retornado é conforme exibido abaixo, com um status http `404`:
+    - Se o post for inexistente o resultado retornado é conforme exibido abaixo, com um status HTTP `404`:
     ```json
     {
       "message": "Post does not exist"
@@ -630,14 +636,14 @@ npm test **01**
     <strong>17 - DELETE /user/me</strong>
   </summary>
   <ul>
-    <li>O endpoint é acessível através do URL `/user/me`;</li>
-    <li>O endpoint é capaz de deletar você do banco de dados, baseado no `id` que esta dentro do seu `token`;</li>
+    <li>O endpoint é acessível através do URL <strong>/user/me</strong>;</li>
+    <li>O endpoint é capaz de deletar você do banco de dados, baseado no <strong>id</strong> que esta dentro do seu <strong>token</strong>;</li>
     <li>A aplicação é capaz de utilizar o token de autenticação nos headers, para saber o user logado correspondente á ser apagado;</li>
   </ul>
   <h2>Pontos avaliados</h2>
     <ul>
       <li>É validado que é possível excluir meu usuário com sucesso;</li>
-      <li>Se o user for deletado com sucesso não deve ser retornada nenhuma resposta, apenas um status http `204`:</li>
+      <li>Se o user for deletado com sucesso não deve ser retornada nenhuma resposta, apenas um status HTTP <strong>204</strong>:</li>
     </ul>
 </details>
 
@@ -646,21 +652,25 @@ npm test **01**
     <strong>18 - /GET /post/search</strong>
   </summary>
   <ul>
-    <li>O endpoint é acessível através do URL `/post/search`;</li>
-    <li>O endpoint é capaz de trazer os blogs post baseados no `q` do banco de dados, se ele existir;</li>
+    <li>O endpoint é acessível através do URL <strong>/post/search</strong>;</li>
+    <li>O endpoint é capaz de trazer os blogs post baseados no <strong>q</strong> do banco de dados, se ele existir;</li>
     <li>A aplicação é capaz de retornar um array de blogs post que contenham em seu título ou conteúdo o termo passado na URL;
     </li>
     <li>A aplicação é capaz de retornar um array vázio caso nenhum blog post satisfaça a busca;</li>
     <li>O query params da requisição segue o formato abaixo:</li>
   <ul>
 
-    ``` js
-      http://localhost:PORT/post/search?q=vamos
-    ```
+  ``` js
+    [
+      {
+        http://localhost:PORT/post/search?q=vamos
+      }
+    ]
+  ```
   <h2>Pontos avaliados</h2>
 
   * É validado que é possível buscar um blogpost pelo `title`;
-    - Se a buscar for pelo `title` o resultado retornado é conforme exibido abaixo, com um status http `200`:
+    - Se a buscar for pelo `title` o resultado retornado é conforme exibido abaixo, com um status HTTP `200`:
     ```json
     // GET /post/search?q=Vamos que vamos
 
@@ -676,7 +686,7 @@ npm test **01**
           "id": 1,
           "displayName": "Lewis Hamilton",
           "email": "lewishamilton@gmail.com",
-          "image": "https://upload.wikimedia.org/wikipedia/commons/1/18/Lewis_Hamilton_2016_Malaysia_2.jpg"
+          "image": "HTTPs://upload.wikimedia.org/wikipedia/commons/1/18/Lewis_Hamilton_2016_Malaysia_2.jpg"
         },
         "categories": [
           {
@@ -689,7 +699,7 @@ npm test **01**
     ```
 
   * É validado que é possível buscar um blogpost pelo `content`;
-    - Se a buscar for pelo `content` o resultado retornado é conforme exibido abaixo, com um status http `200`:
+    - Se a buscar for pelo `content` o resultado retornado é conforme exibido abaixo, com um status HTTP `200`:
     ```json
       // GET /post/search?q=Foguete não tem ré
 
@@ -718,7 +728,7 @@ npm test **01**
     ```
 
   * É validado se é possível buscar todos os blogpost quando passa a busca vazia;
-    - Se a buscar for vazia o resultado retornado é conforme exibido abaixo, com um status http `200`:
+    - Se a buscar for vazia o resultado retornado é conforme exibido abaixo, com um status HTTP `200`:
     ```json
       // GET /post/search?q=
 
@@ -749,7 +759,7 @@ npm test **01**
     ```
 
   * É validado que é possível buscar um blogpost inexistente e retornar array vazio;
-    - Se a buscar um post inexistente o resultado retornado é conforme exibido abaixo, com um status http `200`:
+    - Se a buscar um post inexistente o resultado retornado é conforme exibido abaixo, com um status HTTP `200`:
     ```json
       // GET /post/search?q=BATATA
 
@@ -767,7 +777,7 @@ npm test **01**
   <h2>Pontos avaliados</h2>
 
   * É validado que não é possível fazer uma operação sem o token na requisição;
-    - Se o token for inexistente o resultado retornado é conforme exibido abaixo, com um status http `401`:
+    - Se o token for inexistente o resultado retornado é conforme exibido abaixo, com um status HTTP `401`:
     ```json
     {
       "message": "Token not found"
@@ -775,7 +785,7 @@ npm test **01**
     ```
 
   * É validado que não é possível fazer uma operação com o token inválido;
-    - Se o token for inválido o resultado retornado é conforme exibido abaixo, com um status http `401`:
+    - Se o token for inválido o resultado retornado é conforme exibido abaixo, com um status HTTP `401`:
     ```json
     {
       "message": "Expired or invalid token"
