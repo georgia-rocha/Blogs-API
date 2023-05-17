@@ -31,4 +31,10 @@ router.put(
   post.updatePostById,
 );
 
+router.delete(
+  '/:id',
+  validateToken,
+  post.deletePostById,
+);
+
 module.exports = router;
