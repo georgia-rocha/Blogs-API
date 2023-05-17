@@ -36,6 +36,20 @@ git clone git@github.com:georgia-rocha/Blogs-API.git
 cd Blogs-API
 ```
 
+ <strong>! É necessário ter um arquivo <strong>.env</strong> na raiz da aplicação, com o conteúdo:</strong>
+
+  ```
+    NODE_ENV=development
+    API_PORT=3001
+    API_HOST=localhost
+    MYSQL_HOST=localhost
+    MYSQL_PORT=3306
+    MYSQL_DB_NAME=blogs-api
+    MYSQL_USER=root
+    MYSQL_PASSWORD=password
+    JWT_SECRET=suaSenhaSecreta
+  ```
+
 <details>
   <summary><strong>:whale: Rodando Projeto no Docker vs Localmente</strong></summary><br />
   
