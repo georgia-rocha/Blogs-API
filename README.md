@@ -112,7 +112,7 @@ npm test **01**
     <li>O teste fez uma conexão no banco de dados usando a configuração de teste do arquivo src/config/config.js, e foi posível validar que:
     </li>
     <ul>
-      <li>É possível fazer um INSERT e um SELECT na tabela **users**;</li>
+      <li>É possível fazer um INSERT e um SELECT na tabela <strong>users</strong>;</li>
       <li>É possível fazer um INSERT e um SELECT na tabela categories;</li>
       <li>A partir de um INSERT em users, é possível fazer um INSERT e um SELECT na tabela blog_posts;</li>
       <li>A partir de INSERTs em users, categories e blog_posts, é possível fazer um INSERT e um SELECT na tabela posts_categories;</li>  
@@ -123,15 +123,15 @@ npm test **01**
     <summary><strong>2 - Cria model de User</strong>
     </summary>
   <ul>
-    <li> É validado que existe o arquivo 'User.js';</li> 
-    <li> É validado que o modelo possui o nome 'User';</li> 
-    <li> É validado que o modelo possui a propriedade 'id';</li> 
-    <li> É validado que o modelo possui a propriedade 'display_name';</li> 
-    <li> É validado que o modelo possui a propriedade 'email';
+    <li> É validado que existe o arquivo <strong>User.js</strong>;</li> 
+    <li> É validado que o modelo possui o nome <strong>User</strong>;</li> 
+    <li> É validado que o modelo possui a propriedade <strong>id</strong>;</li> 
+    <li> É validado que o modelo possui a propriedade <strong>display_name</strong>;</li> 
+    <li> É validado que o modelo possui a propriedade <strong>email</strong>;
     </li> 
-    <li> É validado que o modelo possui a propriedade 'password';
+    <li> É validado que o modelo possui a propriedade <strong>password</strong>;
     </li> 
-    <li> É validado que o modelo possui a propriedade 'image';
+    <li> É validado que o modelo possui a propriedade <strong>image</strong>;
     </li> 
   </ul>
   </details>
@@ -139,7 +139,7 @@ npm test **01**
   <details>
     <summary><strong>3 - POST /login</strong></summary>
     <ul>
-      <li> O endpoint é acessível pela URL `/login`;</li>
+      <li> O endpoint é acessível pela URL <strong>/login</strong>;</li>
       <li>A requisição é feita no formato a seguir:
     </ul>
     
@@ -290,7 +290,7 @@ npm test **01**
   ```
 
   * É validado que não é possível listar um usuário inexistente;
-    - Se o usuário for inexistente o resultado retornado é conforme exibido abaixo, com um status HTTP 404`:
+    - Se o usuário for inexistente o resultado retornado é conforme exibido abaixo, com um status HTTP <strong>404</strong>:
     ```json
     {
       "message": "User does not exist"
@@ -385,17 +385,17 @@ npm test **01**
     </summary>
      <strong>Pontos avaliados</strong>
 
-  * É validado que existe o arquivo 'BlogPost.js';
-  * É validado que o modelo possui o nome 'BlogPost';
-  * É validado que o modelo possui a propriedade 'id';
-  * É validado que o modelo possui a propriedade 'title';
-  * É validado que o modelo possui a propriedade 'content';
-  * É validado que o modelo possui a propriedade 'user_id';
-  * É validado que o modelo possui a propriedade 'published';
-  * É validado que o modelo possui a propriedade 'updated';
-  * É validado que o modelo em 'BlogPost.js', define a associação 'belongsTo', com a entidade de nome 'User';
+  * É validado que existe o arquivo <strong>BlogPost.js</strong>;
+  * É validado que o modelo possui o nome <strong>BlogPost</strong>;
+  * É validado que o modelo possui a propriedade <strong>id</strong>;
+  * É validado que o modelo possui a propriedade <strong>title</strong>;
+  * É validado que o modelo possui a propriedade <strong>content</strong>;
+  * É validado que o modelo possui a propriedade <strong>user_id</strong>;
+  * É validado que o modelo possui a propriedade <strong>published</strong>;
+  * É validado que o modelo possui a propriedade <strong>updated</strong>;
+  * É validado que o modelo em <strong>BlogPost.js</strong>, define a associação <strong>belongsTo</strong>, com a entidade de nome <strong>User</strong>;
 
-  * É validado que o modelo em 'User.js', define a associação 'hasMany', com a entidade de nome 'BlogPost';
+  * É validado que o modelo em <strong>User.js</strong>, define a associação <strong>hasMany</strong>, com a entidade de nome <strong>BlogPost</strong>;
 </details>
     
 <details>
@@ -404,15 +404,15 @@ npm test **01**
   </summary>
   <h2>Os seguintes pontos serão avaliados</h2>
 
-  * É validado que existe o arquivo 'PostCategory.js';
+  * É validado que existe o arquivo <strong>PostCategory.js</strong>;
 
-  * É validado que o modelo possui o nome 'PostCategory';
+  * É validado que o modelo possui o nome <strong>PostCategory</strong>;
 
-  * É validado que o modelo possui a propriedade 'post_id';
+  * É validado que o modelo possui a propriedade <strong>post_id</strong>;
 
-  * É validado que o modelo possui a propriedade 'category_id';
+  * É validado que o modelo possui a propriedade <strong>category_id</strong>;
 
-  * É validado que o modelo em 'PostCategory.js', através do(s) modelos(s) de nome(s) 'Category; BlogPost', define a associação 'belongsToMany' respectivamente, com o(s) modelo(s) de nome(s) 'BlogPost, Category';
+  * É validado que o modelo em <strong>PostCategory.js</strong>, através do(s) modelos(s) de nome(s) <strong>Category; BlogPost</strong>, define a associação <strong>belongsToMany</strong> respectivamente, com o(s) modelo(s) de nome(s) <strong>BlogPost, Category</strong>;
   </details>
     
 <details>
