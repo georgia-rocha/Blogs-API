@@ -113,9 +113,9 @@ npm test **01**
     </li>
     <ul>
       <li>É possível fazer um INSERT e um SELECT na tabela <strong>users</strong>;</li>
-      <li>É possível fazer um INSERT e um SELECT na tabela categories;</li>
-      <li>A partir de um INSERT em users, é possível fazer um INSERT e um SELECT na tabela blog_posts;</li>
-      <li>A partir de INSERTs em users, categories e blog_posts, é possível fazer um INSERT e um SELECT na tabela posts_categories;</li>  
+      <li>É possível fazer um INSERT e um SELECT na tabela  <strong>categories</strong>;</li>
+      <li>A partir de um INSERT em users, é possível fazer um INSERT e um SELECT na tabela  <strong>blog_posts</strong>;</li>
+      <li>A partir de INSERTs em  <strong>users, categories e blog_posts</strong>, é possível fazer um INSERT e um SELECT na <strong>tabela posts_categories</strong>;</li>  
     </ul>
   </details>
   
@@ -185,7 +185,7 @@ npm test **01**
     <strong>4 - POST /user</strong>
   </summary>
   <ul>
-    <li>O endpoint é acessível pela URL /user, onde é possível adicionar um novo usuário na tabela no banco de dados;</li>
+    <li>O endpoint é acessível pela URL  <strong>/user </strong>, onde é possível adicionar um novo usuário na tabela no banco de dados;</li>
     <li>A requisição é feita no formato a seguir:</li>
   </ul>
 
@@ -245,7 +245,7 @@ npm test **01**
 <details>
     <summary><strong>5 - GET /user/</strong></summary>
     <ul>
-      <li>O endpoint é acessível pela URL /user, onde é possível buscar todos os usuários na tabela no banco de dados;</li>
+      <li>O endpoint é acessível pela URL  <strong>/user </strong>, onde é possível buscar todos os usuários na tabela no banco de dados;</li>
      <li>É validado que é possível listar todos os usuários;</li>
      <li>Ao listar usuários com sucesso o resultado retornado é conforme exibido abaixo, com um status HTTP <strong>200</strong>:</li>
     </ul>
