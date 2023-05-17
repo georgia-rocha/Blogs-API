@@ -1,7 +1,7 @@
 ![node-version](https://img.shields.io/badge/Node-v16.13.0-yellow)
 
 ## Objetivo 👩‍🎓
- O objetivo deste projeto foi simular um Blog, onde desenvolvi uma API e um banco de dados em Node.js, utilizando sequelize para fazer um CRUD,onde é possível
+ O objetivo deste projeto foi simular um Blog, onde desenvolvi uma API e um banco de dados em Node.js, utilizando sequelize para fazer um CRUD, onde é possível
  criar usuários, fazer login, criar categorias de posts, criar posts, atualizá-los, deletá-los, buscá-los por id e por texto em seu título ou em seu conteúdo;
 
 # Tecnologias utilizadas <a name="tecnologias"></a>
