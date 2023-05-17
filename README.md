@@ -70,17 +70,27 @@ Em ambiente de desenvolvimento:
 ```
 npm run dev
 ```
-  
+
+4. Para testar a aplicação:
+Testar todas:
+```
+npm test
+```
+Testar individuamente:
+ - Colocar o número do requisito a ser testado;
+```
+npm test **01** 
+```
 </details>
 
 <details>
   <summary>
-    <strong>Descrevendo Aplicação</strong>
+    <strong>DESCREVENDO APLICAÇÃO</strong>
   </summary>
 
   <details>
   <summary>
-    <strong>Requisito 1 - Cria migrations para as tabelas users, categories, blog_posts, posts_categories</strong>
+    <strong>1 - Cria migrations para as tabelas users, categories, blog_posts, posts_categories</strong>
   </summary>
   <ul>
     <li> Foi criado as migrations para as tabelas respeitando a nomeclatura pedida no requisito e o diagrama de Entidade-Relacionamento e o formato das entidades;
@@ -96,7 +106,7 @@ npm run dev
   </details>
   
   <details>
-    <summary><strong>Requisito 2 - Cria model de User</strong>
+    <summary><strong>2 - Cria model de User</strong>
     </summary>
   <ul>
     <li> É validado que existe o arquivo 'User.js';</li> 
@@ -113,7 +123,7 @@ npm run dev
   </details>
   
   <details>
-    <summary><strong>Requisito 3 - POST /login</strong></summary>
+    <summary><strong>3 - POST /login</strong></summary>
     <li> O endpoint é acessível pela URL `/login`;</li>
     <li>A requisição é feita no formato a seguir:
 
@@ -156,7 +166,7 @@ npm run dev
     
 <details>
   <summary>
-    <strong>Requisito 4 - POST /user</strong>
+    <strong>4 - POST /user</strong>
   </summary>
   <ul>
     <li>O endpoint é acessível pela URL /user, onde é possível adicionar um novo usuário na tabela no banco de dados;</li>
@@ -217,28 +227,30 @@ npm run dev
 </details>
     
 <details>
-    <summary>Requisito 5 - GET /user/</summary>
- * O endpoint é acessível pela URL /user, onde é possível buscar todos os usuários na tabela no banco de dados;
- 
-  * É validado que é possível listar todos os usuários;
-    - Ao listar usuários com sucesso o resultado retornado é conforme exibido abaixo, com um status http `200`:
-    ```json
-    [
-      {
-          "id": 1,
-          "displayName": "Lewis Hamilton",
-          "email": "lewishamilton@gmail.com",
-          "image": "https://upload.wikimedia.org/wikipedia/commons/1/18/Lewis_Hamilton_2016_Malaysia_2.jpg"
-      },
+    <summary><strong>5 - GET /user/</strong></summary>
+    <ul>
+      <li>O endpoint é acessível pela URL /user, onde é possível buscar todos os usuários na tabela no banco de dados;</li>
+     <li>É validado que é possível listar todos os usuários;</li>
+     <li>Ao listar usuários com sucesso o resultado retornado é conforme exibido abaixo, com um status http `200`:</li>
+    </ul>
 
-      /* ... */
-    ]
-    ```
+      ```json
+      [
+        {
+            "id": 1,
+            "displayName": "Lewis Hamilton",
+            "email": "lewishamilton@gmail.com",
+            "image": "https://upload.wikimedia.org/wikipedia/commons/1/18/Lewis_Hamilton_2016_Malaysia_2.jpg"
+        },
+
+        /* ... */
+      ]
+      ```
 </details>
     
 <details>
   <summary>
-    <strong>Requisito 6 - GET /user/:id</strong>
+    <strong>6 - GET /user/:id</strong>
   </summary>
   <ul>
     <li>O endpoint é acessível através do URL `/user/:id`;</li>
@@ -268,7 +280,7 @@ npm run dev
 
 <details>
   <summary>
-    <strong>Requisito 7 - Cria model de Category</strong>
+    <strong>7 - Cria model de Category</strong>
   </summary>
        
   <h2>Pontos avaliados</h2>
@@ -281,7 +293,7 @@ npm run dev
   
 <details>
   <summary>
-    <strong>Requisito 8 - POST /categories</strong>
+    <strong>8 - POST /categories</strong>
   </summary>
   <ul>    
     <li>O endpoint é acessível através do URL `/categories`;</li>
@@ -321,7 +333,7 @@ npm run dev
     
 <details>
   <summary>
-    <strong>Requisito 9 - GET /categories</strong>
+    <strong>9 - GET /categories</strong>
   </summary>
   <ul>  
     <li>O endpoint é acessível através do URL `/categories`;</li>
@@ -349,7 +361,7 @@ npm run dev
     
  <details>
     <summary>
-      <strong>Requisito 10 - Cria model de BlogPost</strong>
+      <strong>10 - Cria model de BlogPost</strong>
     </summary>
      <strong>Pontos avaliados</strong>
 
@@ -368,7 +380,7 @@ npm run dev
     
 <details>
   <summary>
-    <strong>Requisito 11 - Cria model de PostCategory</strong>
+    <strong>11 - Cria model de PostCategory</strong>
   </summary>
   <h2>Os seguintes pontos serão avaliados</h2>
 
@@ -384,7 +396,7 @@ npm run dev
   </details>
     
 <details>
-  <summary><strong>Requisito 12 - POST /post</strong></summary>
+  <summary><strong>12 - POST /post</strong></summary>
   <ul>
     <li>O endpoint é acessível através do URL `/post`;</li>
     <li>O endpoint é capaz de adicionar um novo blog post e vinculá-lo às categorias em suas tabelas no banco de dados;
@@ -432,7 +444,7 @@ npm run dev
 </details>
 
 <details>
-  <summary><strong>Requisito 13 - GET /post/</strong></summary>
+  <summary><strong>13 - GET /post/</strong></summary>
     <ul>
       <li>O endpoint é acessível através do URL `/post`;</li>
       <li>O endpoint é capaz de trazer todos os blogs post, user dono dele e as categorias do banco de dados;</li>
@@ -473,7 +485,7 @@ npm run dev
     
 <details>
   <summary>
-    <strong>Requisito 14 - GET /post/:id</strong>
+    <strong>14 - GET /post/:id</strong>
   </summary>
     <ul>
       <li>O endpoint é acessível através do URL `/post/:id`;</li>
@@ -518,7 +530,7 @@ npm run dev
    
 <details>
   <summary>
-    <strong>Requisito 15 - PUT /post/:id</strong>
+    <strong>15 - PUT /post/:id</strong>
   </summary>
   <ul>
     <li>O endpoint é acessível através do URL `/post/:id`;</li>
@@ -584,7 +596,7 @@ npm run dev
 </details>
     
 <details>
-  <summary>Requisito 16 - DELETE /post/:id</summary>
+  <summary><strong>16 - DELETE /post/:id</strong></summary>
     <ul>
       <li>O endpoint é acessível através do URL `/post/:id`;</li>
       <li> O endpoint é capaz de deletar um blog post baseado no `id` do banco de dados se ele existir;</li>
@@ -615,7 +627,7 @@ npm run dev
     
 <details>
   <summary>
-    <strong>Requisito 17 - DELETE /user/me</strong>
+    <strong>17 - DELETE /user/me</strong>
   </summary>
   <ul>
     <li>O endpoint é acessível através do URL `/user/me`;</li>
@@ -631,7 +643,7 @@ npm run dev
 
 <details>
   <summary>
-    <strong>Requisito 18 - /GET /post/search</strong>
+    <strong>18 - /GET /post/search</strong>
   </summary>
   <ul>
     <li>O endpoint é acessível através do URL `/post/search`;</li>
@@ -791,7 +803,7 @@ O projeto foi desenvolvido seguindo requisitos pré-estabelecidos:
 - [x] 14. Sua aplicação deve ter o endpoint GET /post/:id;
 - [x] 15. Sua aplicação deve ter o endpoint PUT /post/:id;
 
-## Requisitos bônus
+## Requisitos bônus 100% ✔️
 
 - [x] 16. Sua aplicação deve ter o endpoint DELETE /post/:id;
 - [x] 17. Sua aplicação deve ter o endpoint DELETE /user/me;
