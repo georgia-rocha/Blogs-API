@@ -74,47 +74,62 @@ npm run dev
 </details>
 
 <details>
-  <summary><strong>Descrevendo Aplicação</strong></summary>
+  <summary>
+    <strong>Descrevendo Aplicação</strong>
+  </summary>
+
   <details>
-  <summary>Requisito 1 - Cria migrations para as tabelas users, categories, blog_posts, posts_categories</summary>
- - Foi criado as migrations para as tabelas respeitando a nomeclatura pedida no requisito e o diagrama de Entidade-Relacionamento e o formato das entidades;
-    <br>
-  - O teste fez uma conexão no banco de dados usando a configuração de teste do arquivo src/config/config.js, e foi posível validar que:
-    <br>
-    * É possível fazer um INSERT e um SELECT na tabela users;
-    * É possível fazer um INSERT e um SELECT na tabela categories;
-    * A partir de um INSERT em users, é possível fazer um INSERT e um SELECT na tabela blog_posts;
-    <br>
-    * A partir de INSERTs em users, categories e blog_posts, é possível fazer um INSERT e um SELECT na tabela posts_categories;  
+  <summary>
+    <strong>Requisito 1 - Cria migrations para as tabelas users, categories, blog_posts, posts_categories</strong>
+  </summary>
+  <ul>
+    <li> Foi criado as migrations para as tabelas respeitando a nomeclatura pedida no requisito e o diagrama de Entidade-Relacionamento e o formato das entidades;
+    </li>
+    <li>O teste fez uma conexão no banco de dados usando a configuração de teste do arquivo src/config/config.js, e foi posível validar que:
+    </li>
+    <ul>
+      <li>É possível fazer um INSERT e um SELECT na tabela **users**;</li>
+      <li>É possível fazer um INSERT e um SELECT na tabela categories;</li>
+      <li>A partir de um INSERT em users, é possível fazer um INSERT e um SELECT na tabela blog_posts;</li>
+      <li>A partir de INSERTs em users, categories e blog_posts, é possível fazer um INSERT e um SELECT na tabela posts_categories;</li>  
+    </ul>
   </details>
   
   <details>
-    <summary>Requisito 2 - Cria model de User</summary>
- 
-  * É validado que existe o arquivo 'User.js';
-  * É validado que o modelo possui o nome 'User';
-  * É validado que o modelo possui a propriedade 'id';
-  * É validado que o modelo possui a propriedade 'display_name';
-  * É validado que o modelo possui a propriedade 'email';
-  * É validado que o modelo possui a propriedade 'password';
-  * É validado que o modelo possui a propriedade 'image';
+    <summary><strong>Requisito 2 - Cria model de User</strong>
+    </summary>
+  <ul>
+    <li> É validado que existe o arquivo 'User.js';</li> 
+    <li> É validado que o modelo possui o nome 'User';</li> 
+    <li> É validado que o modelo possui a propriedade 'id';</li> 
+    <li> É validado que o modelo possui a propriedade 'display_name';</li> 
+    <li> É validado que o modelo possui a propriedade 'email';
+    </li> 
+    <li> É validado que o modelo possui a propriedade 'password';
+    </li> 
+    <li> É validado que o modelo possui a propriedade 'image';
+    </li> 
+  </ul>
   </details>
   
   <details>
-    <summary>Requisito 3 - POST /login</summary>
-    - O endpoint é acessível pela URL `/login`;
-    - A requisição é feita no formato a seguir:
+    <summary><strong>Requisito 3 - POST /login</strong></summary>
+    <li> O endpoint é acessível pela URL `/login`;</li>
+    <li>A requisição é feita no formato a seguir:
+
     ```json
-  {
-    "email": "lewishamilton@gmail.com",
-    "password": "123456"
-  }
-  ```
-    
-  <strong>Os seguintes pontos foram avaliados:</strong>
+    {
+      "email": "lewishamilton@gmail.com",
+      "password": "123456"
+    }
+     ```
+ 
+
+  <h2>Os seguintes pontos foram avaliados:</h2>
     
   - Foi validado que não é possível fazer login sem todos os campos preenchidos:
     - Se a requisição não tiver todos os campos devidamente preenchidos(não pode haver campos em branco), o resultado retornado deverá ser conforme exibido abaixo, com um status http `400`:
+
     ```json
     {
       "message": "Some required fields are missing"
@@ -139,21 +154,25 @@ npm run dev
     > :warning: O token anterior é fictício, seu token deve ser gerado a partir da variável de ambiente `JWT_SECRET`, do `payload` da requisição e não deve conter o atributo `password` em sua construção.
 </details>
     
-  <details>
-    <summary>Requisito 4 - POST /user</summary>
-    * O endpoint é acessível pela URL /user, onde é possível adicionar um novo usuário na tabela no banco de dados;
-     * A requisição é feita no formato a seguir:
-    
-    ```json
-  {
-    "displayName": "Brett Wiltshire",
-    "email": "brett@email.com",
-    "password": "123456",
-    "image": "http://4.bp.blogspot.com/_YA50adQ-7vQ/S1gfR_6ufpI/AAAAAAAAAAk/1ErJGgRWZDg/S45/brett.png"
-    // a imagem não é obrigatória
-  }
+<details>
+  <summary>
+    <strong>Requisito 4 - POST /user</strong>
+  </summary>
+  <ul>
+    <li>O endpoint é acessível pela URL /user, onde é possível adicionar um novo usuário na tabela no banco de dados;</li>
+    <li>A requisição é feita no formato a seguir:</li>
+  </ul>
+
+  ```json
+    {
+      "displayName": "Brett Wiltshire",
+      "email": "brett@email.com",
+      "password": "123456",
+      "image": "http://4.bp.blogspot.com/_YA50adQ-7vQ/S1gfR_6ufpI/AAAAAAAAAAk/1ErJGgRWZDg/S45/brett.png"
+      // a imagem não é obrigatória
+    }
   ```
-<strong>Pontos avaliados</strong>
+  <h2>Pontos avaliados</h2>
 
   * É validado que não é possível cadastrar com o campo `displayName` menor que 8 caracteres;
     - Se a requisição não tiver o campo `displayName` devidamente preenchido com 8 caracteres ou mais, o resultado retornado é conforme exibido abaixo, com um status http `400`:
@@ -195,7 +214,7 @@ npm run dev
       }
       ```
 
-  </details>
+</details>
     
 <details>
     <summary>Requisito 5 - GET /user/</summary>
@@ -215,14 +234,17 @@ npm run dev
       /* ... */
     ]
     ```
-  </details>
+</details>
     
- <details>
-    <summary>Requisito 6 - GET /user/:id</summary>
-- O endpoint é acessível através do URL `/user/:id`;
-- O endpoint é capaz de trazer o `user` baseado no `id` do banco de dados se ele existir;
-
-<strong>Pontos avaliados</strong>
+<details>
+  <summary>
+    <strong>Requisito 6 - GET /user/:id</strong>
+  </summary>
+  <ul>
+    <li>O endpoint é acessível através do URL `/user/:id`;</li>
+    <li>O endpoint é capaz de trazer o `user` baseado no `id` do banco de dados se ele existir;</li>
+  </ul>
+  <h2>Pontos avaliados</h2>
 
    * É validado que é possível listar um usuário específico com sucesso;
     - Ao listar um usuário com sucesso o resultado retornado é conforme exibido abaixo, com um status http `200`:
@@ -244,31 +266,38 @@ npm run dev
     ```
   </details>
 
- <details>
-    <summary>Requisito 7 - Cria model de Category</summary>
+<details>
+  <summary>
+    <strong>Requisito 7 - Cria model de Category</strong>
+  </summary>
        
-<strong>Pontos avaliados</strong>
+  <h2>Pontos avaliados</h2>
 
   * É validado que existe o arquivo 'Category.js';
   * É validado que o modelo possui o nome 'Category';
   * É validado que o modelo possui a propriedade 'id';
   * É validado que o modelo possui a propriedade 'name';
-
-  </details>
+</details>
   
-  <details>
-    <summary>Requisito 8 - POST /categories</summary>
-     
-     - O endpoint é acessível através do URL `/categories`;
-- O endpoint é capaz de adicionar uma nova categoria na tabela no banco de dados;
-- O corpo da requisição deverá seguir o formato abaixo:
+<details>
+  <summary>
+    <strong>Requisito 8 - POST /categories</strong>
+  </summary>
+  <ul>    
+    <li>O endpoint é acessível através do URL `/categories`;</li>
+    <li>O endpoint é capaz de adicionar uma nova categoria na tabela no banco de dados;</li>
+    <li>O corpo da requisição deverá seguir o formato abaixo:</li>
+  </ul>
+
   ```json
-  {
-    "name": "Typescript"
-  }
+    [
+      {
+        "name": "Typescript"
+      }
+    ]
   ```
   
-     <strong>Pontos avaliados</strong>
+  <h2>Pontos avaliados</h2>
 
   * É validado que não é possível cadastrar uma categoria sem o campo `name`;
     - Se a requisição não tiver o campo `name` devidamente preenchidos(não pode haver campo em branco), o resultado retornado é conforme exibido abaixo, com um status http `400`:
@@ -281,20 +310,24 @@ npm run dev
   * É validado que é possível cadastrar uma categoria com sucesso;
     - Se a categoria for criada com sucesso o resultado retornado é conforme exibido abaixo, com um status http `201`:
     ```json
-    {
-      "id": 3,
-      "name": "Typescript"
-    }
+    [
+      {
+        "id": 3,
+        "name": "Typescript"
+      }
+    ]
     ```
-  </details>
+</details>
     
 <details>
-    <summary>Requisito 9 - GET /categories</summary>
-      
-- O endpoint é acessível através do URL `/categories`;
-- O endpoint é capaz de trazer todas categorias do banco de dados;
-
-<strong>Os seguintes pontos serão avaliados</strong>
+  <summary>
+    <strong>Requisito 9 - GET /categories</strong>
+  </summary>
+  <ul>  
+    <li>O endpoint é acessível através do URL `/categories`;</li>
+    <li>O endpoint é capaz de trazer todas categorias do banco de dados;</li>
+  </ul>
+  <h2>Pontos avaliados</h2>
 
   * É validado que é possível listar todas as categoria com sucesso;
     - Ao listar categorias com sucesso o resultado retornado é conforme exibido abaixo, com um status http `200`:
@@ -312,10 +345,12 @@ npm run dev
       /* ... */
     ]
     ```
-  </details>
+</details>
     
  <details>
-    <summary>Requisito 10 - Cria model de BlogPost</summary>
+    <summary>
+      <strong>Requisito 10 - Cria model de BlogPost</strong>
+    </summary>
      <strong>Pontos avaliados</strong>
 
   * É validado que existe o arquivo 'BlogPost.js';
@@ -329,12 +364,13 @@ npm run dev
   * É validado que o modelo em 'BlogPost.js', define a associação 'belongsTo', com a entidade de nome 'User';
 
   * É validado que o modelo em 'User.js', define a associação 'hasMany', com a entidade de nome 'BlogPost';
-  </details>
+</details>
     
 <details>
-    <summary>Requisito 11 - Cria model de PostCategory</summary>
-       
-     <strong>Os seguintes pontos serão avaliados</strong>
+  <summary>
+    <strong>Requisito 11 - Cria model de PostCategory</strong>
+  </summary>
+  <h2>Os seguintes pontos serão avaliados</h2>
 
   * É validado que existe o arquivo 'PostCategory.js';
 
@@ -344,15 +380,17 @@ npm run dev
 
   * É validado que o modelo possui a propriedade 'category_id';
 
-  * É validado que o modelo em 'PostCategory.js', através do(s) modelos(s) de nome(s) 'Category; BlogPost', define a associação 'belongsToMany' respectivamente, com o(s) modelo(s) de nome(s) 'BlogPost, Category']**
+  * É validado que o modelo em 'PostCategory.js', através do(s) modelos(s) de nome(s) 'Category; BlogPost', define a associação 'belongsToMany' respectivamente, com o(s) modelo(s) de nome(s) 'BlogPost, Category';
   </details>
     
 <details>
-    <summary>Requisito 12 - POST /post</summary>
-     
-- O endpoint é acessível através do URL `/post`;
-- O endpoint é capaz de adicionar um novo blog post e vinculá-lo às categorias em suas tabelas no banco de dados;
-- O corpo da requisição segue o formato abaixo:
+  <summary><strong>Requisito 12 - POST /post</strong></summary>
+  <ul>
+    <li>O endpoint é acessível através do URL `/post`;</li>
+    <li>O endpoint é capaz de adicionar um novo blog post e vinculá-lo às categorias em suas tabelas no banco de dados;
+    </li>
+    <li>O corpo da requisição segue o formato abaixo:</li>
+  
   ```json
   {
     "title": "Latest updates, August 1st",
@@ -361,7 +399,7 @@ npm run dev
   }
   ```
   
-<strong>Pontos avaliados</strong>
+  <h2>Pontos avaliados</h2>
        
   * É validado que não é possível cadastrar sem todos os campos preenchidos;
     - Se a requisição não tiver todos os campos devidamente preenchidos(não pode haver campos em branco), o resultado retornado é conforme exibido abaixo, com um status http `400`:
@@ -393,15 +431,17 @@ npm run dev
   ```
 </details>
 
-    <details>
-    <summary>Requisito 13 - GET /post/</summary>
-       - O endpoint é acessível através do URL `/post`;
-- O endpoint é capaz de trazer todos os blogs post, user dono dele e as categorias do banco de dados;
-
-       <strong>Pontos avaliados</strong>
+<details>
+  <summary><strong>Requisito 13 - GET /post/</strong></summary>
+    <ul>
+      <li>O endpoint é acessível através do URL `/post`;</li>
+      <li>O endpoint é capaz de trazer todos os blogs post, user dono dele e as categorias do banco de dados;</li>
+    </ul>
+    <h2>Pontos avaliados</h2>
 
   * É validado que é possível listar blogpost com sucesso;
     - Ao listar posts com sucesso o resultado retornado é conforme exibido abaixo, com um status http `200`:
+  
     ```json
     [
       {
@@ -428,18 +468,22 @@ npm run dev
       /* ... */
     ]
     ```
-  </details>
+</details>
+  
     
-     <details>
-    <summary>Requisito 14 - GET /post/:id</summary>
-       
-       - O endpoint é acessível através do URL `/post/:id`;
-- O endpoint é capaz de trazer o blog post baseado no `id` do banco de dados se ele existir;
-
-<strong>Pontos avaliados</strong>
+<details>
+  <summary>
+    <strong>Requisito 14 - GET /post/:id</strong>
+  </summary>
+    <ul>
+      <li>O endpoint é acessível através do URL `/post/:id`;</li>
+      <li>O endpoint é capaz de trazer o blog post baseado no `id` do banco de dados se ele existir;</li>
+    </ul>
+  <h2>Pontos avaliados</h2>
 
   * É validado que é possível listar um blogpost com sucesso;
     - Ao listar um post com sucesso o resultado retornado é conforme exibido abaixo, com um status http `200`:
+  
     ```json
     {
       "id": 1,
@@ -470,15 +514,19 @@ npm run dev
       "message": "Post does not exist"
     }
     ```
-  </details>
-    
-     <details>
-    <summary>Requisito 15 - PUT /post/:id</summary>
-       - O endpoint é acessível através do URL `/post/:id`;
-- O endpoint é capaz de alterar um post do banco de dados, se ele existir;
-- A aplicação só permite a alteração de um blog post caso a pessoa seja dona dele;
-- A aplicação não permite a alteração das categorias do post, somente os atributos `title` e `content` podem ser alterados;
-- O corpo da requisição segue o formato abaixo:
+</details>
+   
+<details>
+  <summary>
+    <strong>Requisito 15 - PUT /post/:id</strong>
+  </summary>
+  <ul>
+    <li>O endpoint é acessível através do URL `/post/:id`;</li>
+    <li>O endpoint é capaz de alterar um post do banco de dados, se ele existir;</li>
+    <li>A aplicação só permite a alteração de um blog post caso a pessoa seja dona dele;</li>
+    <li>A aplicação não permite a alteração das categorias do post, somente os atributos `title` e `content` podem ser alterados;</li>
+    <li>O corpo da requisição segue o formato abaixo:</li>
+
   ```json
   {
     "title": "Latest updates, August 1st",
@@ -486,10 +534,11 @@ npm run dev
   }
   ```
        
-<strong>Pontos avaliados</strong>
+  <h2>Pontos avaliados</h2>
 
   * É validado que não é possível editar um blogpost com outro usuário;
     - Somente o user que criou o blog post poderá editá-lo, o resultado retornado é conforme exibido abaixo, com um status http `401`
+  
     ```json
       {
         "message": "Unauthorized user"
@@ -532,15 +581,17 @@ npm run dev
       ]
     }
     ```
-  </details>
+</details>
     
-    <details>
-      <summary>Requisito 16 - DELETE /post/:id</summary>
-      - O endpoint é acessível através do URL `/post/:id`;
-- O endpoint é capaz de deletar um blog post baseado no `id` do banco de dados se ele existir;
-- A aplicação só permite a deleção de um blog post caso a pessoa seja dona dele;
+<details>
+  <summary>Requisito 16 - DELETE /post/:id</summary>
+    <ul>
+      <li>O endpoint é acessível através do URL `/post/:id`;</li>
+      <li> O endpoint é capaz de deletar um blog post baseado no `id` do banco de dados se ele existir;</li>
+      <li> A aplicação só permite a deleção de um blog post caso a pessoa seja dona dele;</li>
+    </ul>
 
-<strong>Os seguintes pontos serão avaliados</strong>
+<h2>Os seguintes pontos serão avaliados</h2>
 
   * É validado que não é possível deletar um blogpost com outro usuário;
     - Somente o user que criou o blog post poderá deletá-lo, o resultado retornado é conforme exibido abaixo, com um status http `401`
@@ -560,32 +611,41 @@ npm run dev
       "message": "Post does not exist"
     }
     ```
-    </details>
+</details>
     
-    <details>
-      <summary>Requisito 17 - DELETE /user/me </summary>
-      - O endpoint é acessível através do URL `/user/me`;
-- O endpoint é capaz de deletar você do banco de dados, baseado no `id` que esta dentro do seu `token`;
-- A aplicação é capaz de utilizar o token de autenticação nos headers, para saber o user logado correspondente á ser apagado;
+<details>
+  <summary>
+    <strong>Requisito 17 - DELETE /user/me</strong>
+  </summary>
+  <ul>
+    <li>O endpoint é acessível através do URL `/user/me`;</li>
+    <li>O endpoint é capaz de deletar você do banco de dados, baseado no `id` que esta dentro do seu `token`;</li>
+    <li>A aplicação é capaz de utilizar o token de autenticação nos headers, para saber o user logado correspondente á ser apagado;</li>
+  </ul>
+  <h2>Pontos avaliados</h2>
+    <ul>
+      <li>É validado que é possível excluir meu usuário com sucesso;</li>
+      <li>Se o user for deletado com sucesso não deve ser retornada nenhuma resposta, apenas um status http `204`:</li>
+    </ul>
+</details>
 
-      <strong>Pontos avaliados</strong>
+<details>
+  <summary>
+    <strong>Requisito 18 - /GET /post/search</strong>
+  </summary>
+  <ul>
+    <li>O endpoint é acessível através do URL `/post/search`;</li>
+    <li>O endpoint é capaz de trazer os blogs post baseados no `q` do banco de dados, se ele existir;</li>
+    <li>A aplicação é capaz de retornar um array de blogs post que contenham em seu título ou conteúdo o termo passado na URL;
+    </li>
+    <li>A aplicação é capaz de retornar um array vázio caso nenhum blog post satisfaça a busca;</li>
+    <li>O query params da requisição segue o formato abaixo:</li>
+  <ul>
 
-  * É validado que é possível excluir meu usuário com sucesso;
-    - Se o user for deletado com sucesso não deve ser retornada nenhuma resposta, apenas um status http `204`:
-    </details>
-
-    <details>
-      <summary>Requisito 18 - /GET /post/search</summary>
-      - O endpoint é acessível através do URL `/post/search`;
-- O endpoint é capaz de trazer os blogs post baseados no `q` do banco de dados, se ele existir;
-- A aplicação é capaz de retornar um array de blogs post que contenham em seu título ou conteúdo o termo passado na URL;
--A aplicação é capaz de retornar um array vázio caso nenhum blog post satisfaça a busca;
-- O query params da requisição segue o formato abaixo:
-  ```js
-    http://localhost:PORT/post/search?q=vamos
-  ```
-
-<strong>Pontos avaliados</strong>
+    ``` js
+      http://localhost:PORT/post/search?q=vamos
+    ```
+  <h2>Pontos avaliados</h2>
 
   * É validado que é possível buscar um blogpost pelo `title`;
     - Se a buscar for pelo `title` o resultado retornado é conforme exibido abaixo, com um status http `200`:
@@ -683,12 +743,16 @@ npm run dev
 
       []
     ```
-    </details>
+</details>
     
-    <details>
-    <summary><strong>Validando token</strong></summary>
- * Alguns requisitos precisaram da validação do token, para que fosse possível consumir o endpoint
-<strong>Pontos avaliados</strong>
+<details>
+  <summary><strong>VALIDAÇÃO DO TOKEN</strong></summary>
+  <ul>
+  <li>No requisito 4 é preciso criar um token para que seja validado nos próximos requisitos para que fosse possível consumir o endpoint;</li>
+  <li>É validado nos requisitos 5, 6, 8, 9, 12, 13, 14, 15, 16, 17, 18; </li>
+
+  </ul>
+  <h2>Pontos avaliados</h2>
 
   * É validado que não é possível fazer uma operação sem o token na requisição;
     - Se o token for inexistente o resultado retornado é conforme exibido abaixo, com um status http `401`:
@@ -705,9 +769,7 @@ npm run dev
       "message": "Expired or invalid token"
     }
     ```
-
-  </details>
-  
+</details>
   </details>
 
 ## Requisitos Obrigatórios 100% ✔️
