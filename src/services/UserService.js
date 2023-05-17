@@ -1,4 +1,4 @@
-const { User } = require('../models');
+const { User, BlogPost } = require('../models');
 const { generateToken } = require('../auth/authToken');
 
 const createUser = async (displayName, email, password, image) => {
@@ -36,8 +36,21 @@ const getUserById = async (id) => {
   return user;
 };
 
+const deleteMe = async (userId) => {
+  try {
+    await BlogPost.destroy({ where: { userId } });
+
+    const deleteUser = await User.destroy({ where: { id: userId } });
+   
+    return deleteUser;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 module.exports = {
   createUser,
   getUserAll,
   getUserById,
+  deleteMe,
 };

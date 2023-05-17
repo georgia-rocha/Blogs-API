@@ -1,4 +1,7 @@
+const jwt = require('jsonwebtoken');
 const userService = require('../services/UserService');
+
+const { JWT_SECRET } = process.env;
 
 const createUser = async (req, res) => {
   const { displayName, email, password, image } = req.body;
@@ -37,8 +40,24 @@ const getUserById = async (req, res) => {
   }
 };
 
+const deleteMe = async (req, res) => {
+  try {
+    const token = req.headers.authorization;
+    const user = jwt.verify(token, JWT_SECRET);
+   
+    const deleteUser = await userService.deleteMe(user.id);
+    console.log(deleteUser, 'delete user');
+   
+    return res.status(204).json(deleteUser);
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({ message: 'algo deu errado!' });
+  }
+};
+
 module.exports = {
   createUser,
   getUserAll,
   getUserById,
+  deleteMe,
 };

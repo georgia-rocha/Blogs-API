@@ -23,4 +23,10 @@ router.get(
   user.getUserById,
 );
 
+router.delete(
+  '/me',
+  validateToken,
+  user.deleteMe,
+);
+
 module.exports = router;
